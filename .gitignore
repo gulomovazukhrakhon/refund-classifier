@@ -1,0 +1,31 @@
+# Ignore system files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+Thumbs.db
+
+# Ignore virtual environments
+venv/
+env/
+
+
+# Ignore Python dependency files (if auto-generated)
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Ignore FastAPI and Uvicorn cache
+*.pid
+*.sock
+*.db-journal
+
+
+# Ignore environment variables
+.env
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.swp
+*.swo

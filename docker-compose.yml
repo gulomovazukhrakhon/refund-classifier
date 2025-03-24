@@ -1,0 +1,14 @@
+services:
+  modeltoproduction:
+    build: .
+    container_name: modeltoproduction
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app  # Sync local files with the container
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: >
+      sh -c "service cron start &&
+             crontab /etc/cron.d/refund_classifier_cron &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
