@@ -63,7 +63,7 @@ curl -X 'POST' 'http://127.0.0.1:8000/predict/' \
 ### **Example Response**:
 ```json
 {
-  "predicted_class": "Electronics",
+  "predicted_class": "Socks",
   "confidence": 0.91
 }
 ```
@@ -75,12 +75,12 @@ Batch processing **runs automatically** every night at **2 AM** via a cron job i
 
 ### **Manually Run Batch Processing:**
 ```bash
-docker exec -it refund_classifier python /app/batch_process.py
+docker exec -it refund_classifier python /app/app/batch_process.py
 ```
 
 ### **Check Logs for Batch Predictions:**
 ```bash
-docker exec -it refund_classifier cat /app/batch.log
+docker exec -it refund_classifier cat /app/app/logs/batch.log
 ```
 
 ---
@@ -108,6 +108,14 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 docker-compose up --build -d
 ```
 
+```bash
+# Pull from Docker Hub
+docker pull zukhrakhon/refund-classifier:latest
+
+# Create a Container
+docker run -p 8000:8000 zukhrakhon/refund-classifier:latest
+```
+
 ### **5️⃣ Test API Endpoint**
 ```bash
 curl -X 'POST' 'http://127.0.0.1:8000/predict/' \
@@ -124,7 +132,6 @@ curl -X 'POST' 'http://127.0.0.1:8000/predict/' \
 - **Optimize Docker image size further**
 
 ---
-
 ## 📢 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss.
 
