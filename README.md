@@ -21,6 +21,27 @@ The system:
 
 ---
 
+## 📊 Model Info
+- **🔍 Architecture:** ResNet-18 (pretrained on ImageNet)
+- **🏷️ Classes:** 27 fashion categories
+- **🔁 Augmentation:** flipping, rotation, brightness
+- **📈 Accuracy:** ~81% on validation set
+
+---
+
+## 🚀 Architecture Diagram
+
+```mermaid
+graph TD
+  A[Image Upload] --> B[FastAPI Prediction API]
+  B --> C[ResNet18 Model]
+  C --> D[Return Class Probabilities]
+  E[Daily Cron Job] --> F[Batch Folder of Images]
+  F --> B
+```
+
+---
+
 ## 📂 Project Structure
 ```
 refund-classifier/
@@ -123,6 +144,13 @@ curl -X 'POST' 'http://127.0.0.1:8000/predict/' \
   -H 'Content-Type: multipart/form-data' \
   -F 'file=@test_images/sample.jpg'
 ```
+
+---
+
+## 📎 Related Links
+- 📂 Kaggle Notebook: https://www.kaggle.com/code/zukhrakhongulomova/automated-refund-item-classification-system 
+- 💻 GitHub Repository: https://github.com/gulomovazukhrakhon/refund-classifier
+- 🐳 Docker Image: https://hub.docker.com/r/zukhrakhon/refund-classifier
 
 ---
 
