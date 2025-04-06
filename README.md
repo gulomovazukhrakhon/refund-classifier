@@ -104,6 +104,16 @@ docker exec -it refund_classifier python /app/app/batch_process.py
 docker exec -it refund_classifier cat /app/app/logs/batch.log
 ```
 
+### 🚀 Batch Processing Diagram
+```mermaid
+graph TD
+  A[New Refund Item Images<br>Stored in Folder] --> B[batch_process.py Triggered via Cron at 2:00 AM]
+  B --> C[Call /predict/ Endpoint for Each Image]
+  C --> D[Model Classifies Item Images]
+  D --> E[Results Stored in SQLite Database]
+  D --> F[Logs Saved in batch.log]
+```
+
 ---
 
 ## 🛠️ Setup & Installation
